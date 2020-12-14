@@ -1,0 +1,32 @@
+{
+  "name": "webxr-assignment-Iotatfan",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "start": "webpack serve --progress",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AVR-2020/webxr-assignment-Iotatfan.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AVR-2020/webxr-assignment-Iotatfan/issues"
+  },
+  "homepage": "https://github.com/AVR-2020/webxr-assignment-Iotatfan#readme",
+  "dependencies": {
+    "aframe-super-hot-html-loader": "^2.1.0",
+    "aframe-super-hot-loader": "^1.7.0",
+    "diff-dom": "^4.2.2",
+    "pg": "^8.5.1",
+    "webpack": "^5.10.1",
+    "webpack-cli": "^4.2.0"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^3.11.0"
+  }
+}
