@@ -1,0 +1,19 @@
+<!-- Image -->
+<img id="cursorMeshImg" src="assets/models/laser/laser.png">
+
+<!-- Models -->
+<a-asset-item id="laserObj" src="assets/models/laser/laser.obj"></a-asset-item>
+<a-asset-item id="lowPolyTree" src="assets/models/lowpolytree.gltf"></a-asset-item>
+
+<a-entity id="cursorLaser" obj-model="obj: #laserObj" visible="false"></a-entity>
+
+<!-- Mixin -->
+<a-mixin
+    id="menuButton"
+    geometry="primitive: plane; width:1.5; height:0.35"
+    render-order="menubutton"></a-mixin>
+
+<a-mixin
+    id="cursorMesh"
+    material="shader: flat; transparent: true; src: #cursorMeshImg; depthTest: false"
+    sub-object="from: #cursorLaser; name: glow"></a-mixin>

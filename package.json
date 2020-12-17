@@ -19,9 +19,13 @@
   },
   "homepage": "https://github.com/AVR-2020/webxr-assignment-Iotatfan#readme",
   "dependencies": {
+    "aframe-event-set-component": "^5.0.0",
+    "aframe-proxy-event-component": "^2.1.0",
+    "aframe-state-component": "^7.1.0",
     "aframe-super-hot-html-loader": "^2.1.0",
     "aframe-super-hot-loader": "^1.7.0",
     "diff-dom": "^4.2.2",
+    "html-require-loader": "^1.0.1",
     "pg": "^8.5.1",
     "webpack": "^5.10.1",
     "webpack-cli": "^4.2.0"

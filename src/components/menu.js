@@ -1,5 +1,3 @@
-
-
 AFRAME.registerComponent('menu', {
     schema: {
         

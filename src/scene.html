@@ -1,20 +1,20 @@
 <a-scene
-    fog="type: exponential; color: #EEE; density: 0.05"
     light="defaultLightsEnabled: false"
     render-order="playfield, thrower, ball, score, menu, menuitem, menubutton, menutext"
     renderer="colorManagement: true"
-    shadow="type:"
+    shadow="type: pcfsoft"
 >
-    
     <!-- SKY -->
     <a-sky color="#6ebaa7"></a-sky>
 
     <!-- LIGHT -->
-    <a-light type="ambient" intensity="0.3" color="#CCC"></a-light>
-    <a-entity light="type: directional; castShadow: true; intensity: 0.75" position="0 3 5"></a-entity>    
-
-    <a-box id="box1" color="#aa0000" shadow="receive: true" position="0 1.5 -3"></a-box>
-    <a-box color="#444444" position="0 1.5 -7" height="5" width="15" depth="0.2" shadow="receive: true"></a-box>
+    <a-entity light="type: ambient; intensity: 0.3;"></a-entity>
+    <a-entity light="type: point; 
+        intensity: 1.0; 
+        decay: 2;
+        castShadow: true; 
+        shadowCameraVisible: true;" 
+        position="0 20 0" ></a-entity>    
     
     <!-- GROUND -->
     <a-plane
@@ -27,14 +27,29 @@
         color="#52430e" 
         shadow="receive: true"
     ></a-plane>
-
-    <!-- Assets -->
+  
+    <!-- Load Assets -->
     <a-assets>
-        <a-asset-item id="lowPolyTree" src="assets/models/lowpolytree.gltf"></a-asset-item>
-        <a-asset-item id="lumine" src="assets/models/Lumine.gltf"></a-asset-item>
+        <require path="assets.html"></require>
     </a-assets>
 
-    <a-entity gltf-model="#lowPolyTree" position="3 -1.4 -5" scale="1 1 1" shadow="receive: true"></a-entity>
-    <!-- <a-entity gltf-model="#lumine" position="-3 0 -3" scale="0.5 0.5 0.5" shadow="receive: true"></a-entity> -->
+    <!-- Load Templates -->
+    <require path="templates/menu.html"></require>
 
+    <!-- <a-entity gltf-model="#lowPolyTree" position="3 -1.4 -5" scale="1 1 1" shadow="receive: true"></a-entity> -->
+    <a-gltf-model src="#lowPolyTree"  position="5 -2 -5" scale="1.5 1.5 1.5" shadow="receive: true"></a-gltf-model>
+
+    <a-entity
+        id="mouseCursor"
+        bind__raycaster="enabled: !inVR"
+        cursor="rayOrigin: mouse"
+        raycaster="objects: [raycastable]"></a-entity>
+
+    <a-entity
+        id="mouseCursorMesh"
+        mixin="cursorMesh"
+        cursor-mesh="cursorEl: #mouseCursor"
+        bind__cursor-mesh="active: menuActive"
+        render-order="cursor"></a-entity>
+    
 </a-scene>

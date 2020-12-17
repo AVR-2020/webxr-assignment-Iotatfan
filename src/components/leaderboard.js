@@ -1,5 +1,3 @@
-const { Pool } = require('pg')
-
 AFRAME.registerComponent('leaderboard', {
     schema: {
         

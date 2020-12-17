@@ -24,8 +24,15 @@ module.exports = {
       {
         test: /\.html/,
         exclude: /(node_modules)/,
-        use: ['aframe-super-hot-html-loader']
-      }
+        use: ['aframe-super-hot-html-loader',
+        {
+          loader: 'html-require-loader',
+          options: {
+            root: path.resolve(__dirname, 'src')
+          }
+        }
+      ]
+      },
     ]
   }
 };

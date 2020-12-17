@@ -1,22 +1,16 @@
-// require('aframe-extras')
+function requireAll (req) { req.keys().forEach(req); }
+
+require('aframe-event-set-component')
+require('aframe-proxy-event-component')
+require('aframe-state-component');
+
 require('./scene.html')
 
-AFRAME.registerPrimitive('my-ocean', {
-  // Attaches the `ocean` component by default.
-  // Defaults the ocean to be parallel to the ground.
-  defaultComponents: {
-    ocean: {},
-    rotation: {x: -90, y: 0, z: 0}
-  },
+require('./state')
 
-  // Maps HTML attributes to the `ocean` component's properties.
-  mappings: {
-    width: 'ocean.width',
-    depth: 'ocean.depth',
-    density: 'ocean.density',
-    color: 'ocean.color',
-    opacity: 'ocean.opacity'
-  }
-});
+requireAll(require.context('./components/', true, /\.js$/))
+
+
+if (module.hot) { module.hot.accept(); }
 
 // LOAD MODELS
