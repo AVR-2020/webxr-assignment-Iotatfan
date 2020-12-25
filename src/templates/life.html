@@ -1,0 +1,22 @@
+<a-entity
+    id="life"
+    bind__visible="isPlaying"
+    render-order="hud"
+    position="-3 2 -3"
+    rotation="-10 40 0">
+
+    <a-entity
+        id="lifeTextBackground"
+        mixin="slice"
+        slice9="width: 1; height: 0.5;; side: double"           
+        render-order="menu"></a-entity>
+
+    <a-entity id="lifetextContainer">
+        <a-entity
+            id="lifeText"
+            bind__text="value: 'LIFE'"
+            mixin="scoreText"
+            position="0 0 0"></a-entity>
+    </a-entity>
+
+</a-entity>

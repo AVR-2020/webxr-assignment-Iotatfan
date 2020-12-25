@@ -1,0 +1,28 @@
+<a-entity
+    id="scoreboard"
+    bind__visible="isPlaying"
+    render-order="hud"
+    position="3 2 -3"
+    rotation="-10 -40 0">
+
+    <!-- Create Transparent background -->
+    <a-entity
+        id="scoreboardBackground"
+        mixin="slice"
+        slice9="width: 1; height: 0.8;; side: double"           
+        render-order="menu"></a-entity>
+
+    <a-entity id="scoreContainer">
+        <a-entity
+            id="score" text="side: front"
+            bind__text="value: 'SCORE'"
+            mixin="scoreText"
+            position="0 0.15 0"></a-entity>
+        <a-entity
+            id="streak"
+            bind__text="value: 'STREAK'"
+            mixin="scoreText"
+            position="0 -0.15 0"></a-entity>
+    </a-entity>
+
+</a-entity>

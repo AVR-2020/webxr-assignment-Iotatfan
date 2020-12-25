@@ -1,6 +1,6 @@
 <a-scene
     light="defaultLightsEnabled: false"
-    render-order="playfield, thrower, ball, score, menu, menuitem, menubutton, menutext"
+    render-order="playfield, thrower, ball, menu, menuitem, menubutton, menutext, hud"
     renderer="colorManagement: true"
     shadow="type: pcfsoft"
 >
@@ -35,15 +35,23 @@
 
     <!-- Load Templates -->
     <require path="templates/menu.html"></require>
+    <require path="templates/scoreboard.html"></require>
+    <require path="templates/life.html"></require>
 
-    <!-- <a-entity gltf-model="#lowPolyTree" position="3 -1.4 -5" scale="1 1 1" shadow="receive: true"></a-entity> -->
-    <a-gltf-model src="#lowPolyTree"  position="5 -2 -5" scale="1.5 1.5 1.5" shadow="receive: true"></a-gltf-model>
+    <!-- Environment Objescts -->
+    <a-entity position="0 0 0">
+        <a-entity id="tree" position="3.04948 -1.22701 -6.71004" gltf-model="#lowPolyTree" scale="1 1 1" shadow="receive: true; castShadow: true" render-order="playfield"></a-entity>
+    </a-entity>
 
+    <!-- Placeholder for Thrower -->
+    <a-entity id="thrower" rotation="0 90 0" gltf-model="#tank" position="0 0 -30" scale="3 3 3" shadow="receive: true"></a-entity>
+
+    <!-- Cursor -->
     <a-entity
         id="mouseCursor"
         bind__raycaster="enabled: !inVR"
         cursor="rayOrigin: mouse"
-        raycaster="objects: [raycastable]"></a-entity>
+        raycaster="objects: [raycastable]; direction: -0.5713711009843402 0.11127978241550368 -0.8131124614624358"></a-entity>
 
     <a-entity
         id="mouseCursorMesh"

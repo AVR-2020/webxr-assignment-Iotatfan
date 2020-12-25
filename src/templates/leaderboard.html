@@ -5,10 +5,10 @@
     bind__visible="menuActive && leaderboardActive"
     render-order="menuitem">
 
-    <a-plane
+    <a-entity
         id="leaderboardBackground"
-        width= 2 height= 2
-        positio="0 0 0"
-        color="#000"></a-plane>
+        mixin="slice"
+        slice9="width: 2; height: 2; side: double"
+        render-order="menuitem"></a-entity>
 
 </a-entity>

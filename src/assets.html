@@ -1,19 +1,37 @@
 <!-- Image -->
 <img id="cursorMeshImg" src="assets/models/laser/laser.png">
+<img id="sliceImg" src="assets/img/border.png">
 
 <!-- Models -->
 <a-asset-item id="laserObj" src="assets/models/laser/laser.obj"></a-asset-item>
 <a-asset-item id="lowPolyTree" src="assets/models/lowpolytree.gltf"></a-asset-item>
+<a-asset-item id="tank" src="assets/models/tank.gltf"></a-asset-item>
+<a-asset-item id="ball" src="assets/models/ball.gltf"></a-asset-item>
 
 <a-entity id="cursorLaser" obj-model="obj: #laserObj" visible="false"></a-entity>
 
 <!-- Mixin -->
+<a-mixin
+    id="cursorMesh"
+    material="shader: flat; transparent: true; src: #cursorMeshImg; depthTest: false"
+    sub-object="from: #cursorLaser; name: glow"></a-mixin>
+
+<a-mixin
+    id="font"></a-mixin>
+    
 <a-mixin
     id="menuButton"
     geometry="primitive: plane; width:1.5; height:0.35"
     render-order="menubutton"></a-mixin>
 
 <a-mixin
-    id="cursorMesh"
-    material="shader: flat; transparent: true; src: #cursorMeshImg; depthTest: false"
-    sub-object="from: #cursorLaser; name: glow"></a-mixin>
+    id="menuText"
+    text="color: #000; align: center; width: 1; wrapCount: 12"></a-mixin>
+
+<a-mixin
+    id="scoreText"
+    text="color: #FFF; align: center; 
+        width: 1; height: 24;
+        wrapCount: 12"></a-mixin>
+
+<a-mixin id="slice" slice9="color: #FFF; transparent: true; opacity: 0.6; left: 20; right: 43; top: 20; bottom: 43; padding:0.1; src: #sliceImg;"></a-mixin>

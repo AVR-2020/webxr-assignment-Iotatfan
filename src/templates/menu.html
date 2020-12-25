@@ -4,25 +4,25 @@
     bind__visible="menuActive"
     position= "0 1.4 -2.3">
 
-    <a-plane
+    <a-entity
         id="menuBackground"
-        width= 3.5 height= 2
-        color="#111"
+        mixin="slice"
+        slice9="width: 3.5; height: 2; side: double; transparent: true; debug: false;"
         render-order="menu"
-        position="0 0 -2.5"></a-plane>
+        position="0 0 -2.5"></a-entity>
 
     <a-entity id="mainMenu">
         <a-plane
-            id="startButton"
+            id="startButton" material="fog: true; side: front; transparent: false; wireframe: false; visible: true" geometry="skipCache: false"
             mixin="menuButton"
             bind-toggle__raycastable="menuActive"
             proxy-event="event: click; to: a-scene; as: startgame"
             position="0 0.3 -2.45"
             render-order="menu">
             <a-entity 
-                id="startButtonText" 
-                text="value: Start Game; color: #000; align: center; width: 1; wrapCount: 12"
-                font="https://cdn.aframe.io/fonts/mozillavr.fnt"></a-entity>
+                id="startButtonText"
+                mixin="menuText" 
+                text="value: Start Game; side: double"></a-entity>
         </a-plane>
 
         <a-plane
@@ -34,7 +34,8 @@
             render-order="menu">
             <a-entity 
                 id="startButtonText" 
-                text="value: Show Leaderboard; color: #000; align: center; width: 1; wrapCount: 12"></a-entity>
+                mixin="menuText"
+                text="value: Show Leaderboard"></a-entity>
         </a-plane>
     
     </a-entity>

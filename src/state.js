@@ -1,9 +1,12 @@
+const MAX_LIFE = 3
+
 AFRAME.registerState({
     initialState: {
-        isGameOvewr: false,         // Game Over
+        isGameOver: false,          // Game Over
         isPlaying: false,           // Playing
+        leaderboard: [],
         leaderboardActive: false,   // Leaderboard is displayed
-        lifeAmount: 3,              // Player's Life, decrement when miss
+        life: MAX_LIFE,             // Player's Life, decrement when miss
         menuActive: true,           // Is in Menu
         score:  {
             catch: 0,               // Total ball catch by player
@@ -14,8 +17,12 @@ AFRAME.registerState({
     },
     handlers: {
         startgame: state => {
-            state.leaderboardActive = false
+            console.log('Entering Playing State')
+            state.isPlaying = true
             state.menuActive = false
+            state.leaderboardActive = false
+            state.life = MAX_LIFE
+            resetScore(state)
         },
         showleaderboard: state => {
             state.menuActive = true
@@ -23,3 +30,22 @@ AFRAME.registerState({
         }
     }
 })
+
+function checkGameOver (state) {
+    if (state.life <= 0) {
+        state.isGameOver = true
+    }
+}
+
+function resetScore (state) {
+    state.score.catch = 0
+    state.score.highestStreak = 0
+    state.score.score = 0
+    state.score.streak = 0
+}
+
+function miss (state) {
+    state.score.streak = 0
+    state.life -= 1
+    checkGameOver(state)
+}
