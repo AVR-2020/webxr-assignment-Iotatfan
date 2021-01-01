@@ -13,6 +13,10 @@ AFRAME.registerState({
             highestStreak: 0,       // Highest catch without miss
             score: 0,               // Player's score
             streak: 0               // Player's catch without miss
+        },
+        shooter:  {
+            direction: '0 1 0',
+            speed: 2
         }
     },
     handlers: {

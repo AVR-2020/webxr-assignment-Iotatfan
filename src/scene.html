@@ -1,11 +1,12 @@
 <a-scene
+    fog="type: linear; color: #87ceeb; near: 50; far: 80"
     light="defaultLightsEnabled: false"
     render-order="playfield, thrower, ball, menu, menuitem, menubutton, menutext, hud"
     renderer="colorManagement: true"
-    shadow="type: pcfsoft"
+    shadow="type: pcf"
 >
     <!-- SKY -->
-    <a-sky color="#6ebaa7"></a-sky>
+    <a-sky color="#87ceeb"></a-sky>
 
     <!-- LIGHT -->
     <a-entity light="type: ambient; intensity: 0.3;"></a-entity>
@@ -13,20 +14,10 @@
         intensity: 1.0; 
         decay: 2;
         castShadow: true; 
-        shadowCameraVisible: true;" 
-        position="0 20 0" ></a-entity>    
+        shadowCameraVisible: true;"
+        position="0 50 0" ></a-entity>    
     
-    <!-- GROUND -->
-    <a-plane
-        id="ground" 
-        static-body 
-        position="0 0 0" 
-        rotation="-90 0 0" 
-        width="100" 
-        height="100" 
-        color="#52430e" 
-        shadow="receive: true"
-    ></a-plane>
+    <a-entity fps-counter></a-entity>
   
     <!-- Load Assets -->
     <a-assets>
@@ -37,21 +28,18 @@
     <require path="templates/menu.html"></require>
     <require path="templates/scoreboard.html"></require>
     <require path="templates/life.html"></require>
+    <require path="templates/environment.html"></require>
+    <require path="templates/shooter.html"></require>
 
-    <!-- Environment Objescts -->
-    <a-entity position="0 0 0">
-        <a-entity id="tree" position="3.04948 -1.22701 -6.71004" gltf-model="#lowPolyTree" scale="1 1 1" shadow="receive: true; castShadow: true" render-order="playfield"></a-entity>
-    </a-entity>
-
-    <!-- Placeholder for Thrower -->
-    <a-entity id="thrower" rotation="0 90 0" gltf-model="#tank" position="0 0 -30" scale="3 3 3" shadow="receive: true"></a-entity>
+    <!-- Audio on Player Location -->
+    <a-entity sound="src: #bgm; autoplay: false"></a-entity>
 
     <!-- Cursor -->
     <a-entity
         id="mouseCursor"
         bind__raycaster="enabled: !inVR"
         cursor="rayOrigin: mouse"
-        raycaster="objects: [raycastable]; direction: -0.5713711009843402 0.11127978241550368 -0.8131124614624358"></a-entity>
+        raycaster="objects: [raycastable]; direction: -0.6271414776140996 -0.5657992661654614 -0.5353174361653367; origin: 4.511965796091053 66.82408538416385 53.58748401881879"></a-entity>
 
     <a-entity
         id="mouseCursorMesh"

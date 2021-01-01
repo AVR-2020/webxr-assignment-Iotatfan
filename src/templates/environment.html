@@ -1,0 +1,44 @@
+<!-- GROUND -->
+<a-entity id="environment">
+
+    <a-plane
+        id="ground" 
+        static-body 
+        position="0 0 0" 
+        rotation="-90 0 0" 
+        width="200" 
+        height="200" 
+        color="#8ECA58" 
+        shadow="receive: true"
+    ></a-plane>
+
+    <!-- Environment Objects -->
+    <a-entity id="tree" position="-3.02465 0 -27.95161" obj-model="obj: #tree; mtl: #treemtl" scale="0.01 0.01 0.01" shadow="receive: true" render-order="playfield"></a-entity>
+    <a-entity id="fountain" position="0 0 6" obj-model="obj: #fountain; mtl: #fountainmtl" scale="2 2 2" shadow="receive: true" render-order="playfield"></a-entity>
+    <a-entity id="gazebo" rotation="0 53 0" position="0 0 16.97724" obj-model="obj: #gazebo; mtl: #gazebomtl" scale="1 1 1" shadow="receive: true" render-order="playfield"></a-entity>
+
+    <!-- Clouds -->
+    <a-entity id="cloud" rotation="0 0 0" position="0 50 -25" obj-model="obj: #cloud; mtl: #cloudmtl" scale="0.03 0.03 0.03" shadow="receive: true" render-order="playfield"></a-entity>
+
+
+    <!-- Tree Barrier -->
+    <a-entity  position="-0 -0.01 0">
+        <a-entity id="forest#1" rotation="0 4.17 0" position="-20 0 -50" obj-model="obj: #forest; mtl: #forestmtl" scale="10 10 10" shadow="receive: true" render-order="playfield"></a-entity>
+        <a-entity id="forest#2" rotation="0 6.02 0" position="-41.93437 0 -40" obj-model="obj: #forest; mtl: #forestmtl" scale="10 10 10" shadow="receive: true" render-order="playfield"></a-entity>
+        <a-entity id="forest#3" rotation="0 0 0" position="-40.06503 0 47.063" obj-model="obj: #forest; mtl: #forestmtl" scale="10 10 10" shadow="receive: true" render-order="playfield"></a-entity>
+        <a-entity id="forest#4" rotation="0 0 0" position="3.75423 0 -54.65186" obj-model="obj: #forest; mtl: #forestmtl" scale="10 10 10" shadow="receive: true" render-order="playfield"></a-entity>
+        <a-entity id="forest#5" rotation="0 -6.47 0" position="27.93435 0 -49.93007" obj-model="obj: #forest; mtl: #forestmtl" scale="10 10 10" shadow="receive: true" render-order="playfield"></a-entity>
+        <a-entity id="forest#6" rotation="0 -7.91 0" position="-57.76219 0 -24.37149" obj-model="obj: #forest; mtl: #forestmtl" scale="10 10 10" shadow="receive: true" render-order="playfield"></a-entity>
+        <a-entity id="forest#7" rotation="0 -36.91 0" position="50.35229 0 -35.96899" obj-model="obj: #forest; mtl: #forestmtl" scale="10 10 10" shadow="receive: true" render-order="playfield"></a-entity>
+        <a-entity id="forest#8" rotation="0 30 0" position="51.79623 0 -11.96787" obj-model="obj: #forest; mtl: #forestmtl" scale="10 10 10" shadow="receive: true" render-order="playfield"></a-entity>
+        <a-entity id="forest#9" rotation="0 35 0" position="-60.37688 0 -4.809" obj-model="obj: #forest; mtl: #forestmtl" scale="10 10 10" shadow="receive: true" render-order="playfield"></a-entity>
+        <a-entity id="forest#10" rotation="0 54.72 0" position="-63.01354 0 15.97112" obj-model="obj: #forest; mtl: #forestmtl" scale="10 10 10" shadow="receive: true" render-order="playfield"></a-entity>
+        <a-entity id="forest#11" rotation="0 75 0" position="-58.24836 0 35.99521" obj-model="obj: #forest; mtl: #forestmtl" scale="10 10 10" shadow="receive: true" render-order="playfield"></a-entity>
+        <a-entity id="forest#12" rotation="0 90 0" position="-15.69636 0 50.60834" obj-model="obj: #forest; mtl: #forestmtl" scale="10 10 10" shadow="receive: true" render-order="playfield"></a-entity>
+        <a-entity id="forest#13" rotation="0 35 0" position="7.59546 0 47.63395" obj-model="obj: #forest; mtl: #forestmtl" scale="10 10 10" shadow="receive: true" render-order="playfield"></a-entity>
+        <a-entity id="forest#14" rotation="0 60 0" position="33.77944 0 48.58182" obj-model="obj: #forest; mtl: #forestmtl" scale="10 10 10" shadow="receive: true" render-order="playfield"></a-entity>
+        <a-entity id="forest#15" rotation="0 70 0" position="53.1873 0 32.42136" obj-model="obj: #forest; mtl: #forestmtl" scale="10 10 10" shadow="receive: true" render-order="playfield"></a-entity>
+        <a-entity id="forest#16" rotation="0 60 0" position="58.77273 0 9.27566" obj-model="obj: #forest; mtl: #forestmtl" scale="10 10 10" shadow="receive: true" render-order="playfield"></a-entity>
+    </a-entity>
+
+    </a-entity>

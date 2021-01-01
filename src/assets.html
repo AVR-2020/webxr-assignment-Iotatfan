@@ -3,12 +3,23 @@
 <img id="sliceImg" src="assets/img/border.png">
 
 <!-- Models -->
-<a-asset-item id="laserObj" src="assets/models/laser/laser.obj"></a-asset-item>
-<a-asset-item id="lowPolyTree" src="assets/models/lowpolytree.gltf"></a-asset-item>
-<a-asset-item id="tank" src="assets/models/tank.gltf"></a-asset-item>
-<a-asset-item id="ball" src="assets/models/ball.gltf"></a-asset-item>
-
 <a-entity id="cursorLaser" obj-model="obj: #laserObj" visible="false"></a-entity>
+<a-asset-item id="ball" src="assets/models/ball.gltf"></a-asset-item>
+<a-asset-item id="cloud" src="assets/models/cloud/cloud.obj"></a-asset-item>
+<a-asset-item id="cloudmtl" src="assets/models/cloud/cloud.mtl"></a-asset-item>
+<a-asset-item id="forest" src="assets/models/tree/forest.obj"></a-asset-item>
+<a-asset-item id="forestmtl" src="assets/models/tree/forest.mtl"></a-asset-item>
+<a-asset-item id="fountain" scale="2 2 2" src="assets/models/fountain/fountain.obj"></a-asset-item>
+<a-asset-item id="fountainmtl" src="assets/models/fountain/fountain.mtl"></a-asset-item>
+<a-asset-item id="gazebo" position="0 0 16.97724" rotation="0 53 0" src="assets/models/gazebo/gazebo.obj"></a-asset-item>
+<a-asset-item id="gazebomtl" src="assets/models/gazebo/gazebo.mtl"></a-asset-item>
+<a-asset-item id="laserObj" src="assets/models/laser/laser.obj"></a-asset-item>
+<a-asset-item id="tank" src="assets/models/tank.gltf"></a-asset-item>
+<a-asset-item id="tree" position="-3.02465 0 -27.95161" src="assets/models/tree/tree.obj"></a-asset-item>
+<a-asset-item id="treemtl" src="assets/models/tree/tree.mtl"></a-asset-item>
+
+<!-- Audio -->
+<a-audio id="bgm" src="assets/audio/bgm_0.mp3" preload="auto"></a-audio>
 
 <!-- Mixin -->
 <a-mixin

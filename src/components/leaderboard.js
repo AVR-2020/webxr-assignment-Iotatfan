@@ -5,6 +5,7 @@ AFRAME.registerComponent('leaderboard', {
 
     init: function () {
       // Do something when component first attached.
+      // Init DB connection
     },
 
     update: function () {
