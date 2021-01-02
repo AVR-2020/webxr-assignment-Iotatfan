@@ -12,5 +12,4 @@ require('./state')
 
 requireAll(require.context('./components/', true, /\.js$/))
 
-
 if (module.hot) { module.hot.accept(); }

@@ -4,7 +4,7 @@
 
 <!-- Models -->
 <a-entity id="cursorLaser" obj-model="obj: #laserObj" visible="false"></a-entity>
-<a-asset-item id="ball" src="assets/models/ball.gltf"></a-asset-item>
+<a-asset-item id="ballMesh" src="assets/models/ball.gltf"></a-asset-item>
 <a-asset-item id="cloud" src="assets/models/cloud/cloud.obj"></a-asset-item>
 <a-asset-item id="cloudmtl" src="assets/models/cloud/cloud.mtl"></a-asset-item>
 <a-asset-item id="forest" src="assets/models/tree/forest.obj"></a-asset-item>
@@ -26,6 +26,10 @@
     id="cursorMesh"
     material="shader: flat; transparent: true; src: #cursorMeshImg; depthTest: false"
     sub-object="from: #cursorLaser; name: glow"></a-mixin>
+
+<a-mixin
+    id="ball"
+    gltf-model="#ballMesh"></a-mixin>
 
 <a-mixin
     id="font"></a-mixin>

@@ -32,6 +32,10 @@ AFRAME.registerState({
             state.menuActive = true
             state.leaderboardActive = true
         }
+    },
+    computeState: state => {
+        state.isPlaying =
+            !state.isGameOver && !state.menuActive && !state.leaderboardActive
     }
 })
 
