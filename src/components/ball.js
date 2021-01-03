@@ -1,11 +1,11 @@
 AFRAME.registerComponent('ball', {
     schema: {
         direction: {type: 'vec3'},
-        lifeTime: {default: 10.0, type: 'float'},
+        lifeTime: {default: 2.0, type: 'float'},
         name: {default: 'normal', type: 'string'},
         poolSize: {default: 8.0, type: 'float'},
         position: {type: 'vec3'},
-        speed: {default: 20.0, type: 'float'}
+        speed: {default: 25.0, type: 'float'}
     },
 
     init: function () {
@@ -109,12 +109,13 @@ AFRAME.registerSystem('ball', {
       var isHit
       var targetObj
       var t
-
+      
       for (i = 0; i < this.container.children.length; i++) {
         ball = this.container.children[i]
         if (!ball.visible) continue
         ball.time += deltaTime
         if (ball.time >= ball.lifeTime) {
+          this.el.emit('miss')
           this.destroyBall(ball)
           continue
         }
@@ -150,4 +151,3 @@ AFRAME.registerSystem('ball', {
     ball.visible = false
   }
 })
-

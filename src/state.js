@@ -1,4 +1,4 @@
-const MAX_LIFE = 3
+const MAX_LIFE = 100
 
 AFRAME.registerState({
     initialState: {
@@ -22,26 +22,38 @@ AFRAME.registerState({
     handlers: {
         startgame: state => {
             console.log('Entering Playing State')
+            state.isGameOver = false
             state.isPlaying = true
             state.menuActive = false
             state.leaderboardActive = false
             state.life = MAX_LIFE
             resetScore(state)
         },
+
         showleaderboard: state => {
             state.menuActive = true
             state.leaderboardActive = true
+        },
+
+        miss: state => {
+            console.log("Miss")
+            state.score.streak = 0
+            state.life -= 1
+            checkGameOver(state)
         }
     },
+
     computeState: state => {
         state.isPlaying =
             !state.isGameOver && !state.menuActive && !state.leaderboardActive
-    }
+    },
 })
 
 function checkGameOver (state) {
     if (state.life <= 0) {
+        console.log("Game Over")
         state.isGameOver = true
+        state.isPlaying = false
     }
 }
 
@@ -50,10 +62,4 @@ function resetScore (state) {
     state.score.highestStreak = 0
     state.score.score = 0
     state.score.streak = 0
-}
-
-function miss (state) {
-    state.score.streak = 0
-    state.life -= 1
-    checkGameOver(state)
 }

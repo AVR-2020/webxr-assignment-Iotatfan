@@ -15,6 +15,7 @@
         <a-plane
             id="startButton" material="fog: true; side: front; transparent: false; wireframe: false; visible: true" geometry="skipCache: false"
             mixin="menuButton"
+            clickable
             bind-toggle__raycastable="menuActive"
             proxy-event="event: click; to: a-scene; as: startgame"
             position="0 0.3 -2.45"

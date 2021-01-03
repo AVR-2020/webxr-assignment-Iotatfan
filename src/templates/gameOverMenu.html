@@ -1,0 +1,62 @@
+<a-entity id="gameOverContainer"
+    bind__visible="isGameOver"
+    position= "0 1.4 -2.3">
+
+    <a-entity
+        id="menuBackground"
+        mixin="slice"
+        slice9="width: 3.5; height: 2; side: double; transparent: true; debug: false;"
+        render-order="menu"
+        position="0 0.5 -1.5"></a-entity>
+   
+
+        <a-entity 
+            id="gameOverMenu"
+            position="0 1 -1.45">
+            
+            <a-entity id="scoreTextContainer">
+                <a-entity
+                    id="scoreText"
+                    bind__text="value: 'Your Score'"
+                    mixin="scoreText"
+                    position="0 0.2 0"></a-entity>
+
+                <a-entity
+                    id="scoreText"
+                    bind__text="value: score.score"
+                    mixin="scoreText"
+                    position="0 0 0"></a-entity>
+            </a-entity>
+
+            <a-plane
+                id="startButton" 
+                material="fog: true; side: front; transparent: false; wireframe: false; visible: true" 
+                geometry="skipCache: false"
+                mixin="menuButton"
+                clickable
+                bind-toggle__raycastable="isGameOver"
+                proxy-event="event: click; to: a-scene; as: startgame"
+                position="0 -1 0"
+                render-order="menu">
+                <a-entity 
+                    id="startButtonText"
+                    mixin="menuText" 
+                    text="value: Play Again; side: double"></a-entity>
+            </a-plane>
+        
+        </a-entity>
+
+        <a-text 
+            id="input" 
+            font="dejavu" 
+            mixin="scoreText"
+            value="Input Your Name" 
+            position="0 0.75 -1.45"></a-text>
+        <a-entity
+            id="keyboard" rotation="-60 0 0" scale="4 4 4"
+            position="-0.96483 -0.51329 -1"
+            a-keyboard></a-entity>
+    
+        <require path="templates/leaderboard.html"></require>
+    
+</a-entity>
