@@ -135,20 +135,20 @@ AFRAME.registerSystem('ball', {
         // Collision Check
         ballBox.setFromObject(ball)
         for (t = 0; t < this.targets.length; t++) {
-          let target = this.targets[t];
+          let target = this.targets[t]
           if (!target.getAttribute('target').active) { continue; }
-          targetObj = target.object3D;
+          targetObj = target.object3D
           isHit = false;
           if (targetObj.boundingBox) {
             isHit = targetObj.boundingBox.intersectsBox(ballBox);
           } else {
             targetBox.setFromObject(targetObj);
-            isHit = targetBox.intersectsBox(ballBox);
+            isHit = targetBox.intersectsBox(ballBox)
           }
           if (isHit) {
-            this.destroyBall(ball);
-            target.components.target.onBallHit(ball);
-            target.emit('hit', null);
+            this.destroyBall(ball)
+            target.components.target.onBallHit(ball)
+            target.emit('hit', null)
             break;
           }
         }

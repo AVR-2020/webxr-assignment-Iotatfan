@@ -1,5 +1,5 @@
 var posX = [ -3, -2, -1, 0, 1 , 2, 3 ]
-var posY = [ 2]
+var posY = [ 2 ]
 
 AFRAME.registerComponent('random-target', {
     schema: {

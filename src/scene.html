@@ -17,7 +17,7 @@
         shadowCameraVisible: false;"
         position="0 50 0" ></a-entity>    
     
-    <a-entity fps-counter></a-entity>
+    <!-- <a-entity fps-counter></a-entity> -->
   
     <!-- Load Assets -->
     <a-assets timeout="5000">
@@ -27,12 +27,13 @@
     <!-- Load Templates -->
     <require path="templates/environment.html"></require>
     <require path="templates/menu.html"></require>
-    <require path="templates/enemy.html"></require>
+    <require path="templates/droneShooter.html"></require>
     <require path="templates/gameOverMenu.html"></require>
     <require path="templates/randomTarget.html"></require>
 
     <!-- Audio on Player Location -->
-    <a-entity sound="src: #bgm; autoplay: false; positional: false"></a-entity>
+    <a-entity sound="src: #bgm; lopop: true; autoplay: true: on: startgame; volume: 0.05; positional: false"></a-entity>
+    <a-entity sound="src: #hit; poolSize: 15; on: hit; positional: false"></a-entity>
 
     <!-- Player -->
     <a-entity 
@@ -40,28 +41,34 @@
       movement-controls>
       <a-camera
         id="camera"
-        look-controls="pointerLockEnabled: true"
+        look-controls
         position="0 2 0">
 
         <require path="templates/scoreboard.html"></require>
         <require path="templates/life.html"></require>
 
         <a-entity
+          target
           id="mouseCursor"
           cursor="rayOrigin: mouse"
           raycaster="objects : #keyboard"
           proxy-event__daydream="event: trackpaddown; to: #gun; as: triggerdown"
           proxy-event__shoot="event: triggerdown; to: #gun; as: shoot"
           proxy-event__shootsound="event: triggerdown; to: #soundShoot; as: shoot"
+          geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.022"
+          bind__visible="isPlaying"
           shooter
-          position="0.07 -0.1 -0.15"
-          rotation="0 5 0"
+          position="0 0 -0.15"
+          rotation="0 0 0"
           click-to-shoot>
-          <a-entity 
-            obj-model="obj: #pistol; mtl: #pistolmtl" 
-            position="0 -1 -0.3"
-            rotation="0 -90 0"
-            scale="0.1 0.1 0.1"></a-entity>
+          <a-entity
+           static-body
+            target
+            id="cursorModel" static-body="sphereRadius: NaN" visible="false"
+            obj-model="obj: #shield; mtl: #shieldmtl"  
+            position="0 0 -1"
+            rotation="0 -180 0"
+            scale="3 3 3"></a-entity>
         </a-entity>
 
       </a-camera>
@@ -70,18 +77,17 @@
     <!-- Controller -->
     <a-entity
       shooter
-      id="rightGun"
+      id="rightControl"
       vive-controls="hand: right; model: false;"
       oculus-touch-controls="hand: right; model: false;"
       daydream-controls="hand: right; model: false"
-      proxy-event__daydream="event: trackpaddown; to: #rightGun; as: triggerdown"
       proxy-event__shoot="event: triggerdown; to: #rightGun; as: shoot"
       raycaster="objects: [raycastable];">
       <a-entity 
-        obj-model="obj: #pistol; mtl: #pistolmtl" 
+        obj-model="obj: #shield; mtl: #shieldmtl" 
         position="0 -0.2 -0.3"
-        rotation="0 -90 0"
-          scale="0.2 0.2 0.2"></a-entity>
+        rotation="0 90 0"
+          scale="1.2 1.2 1.2"></a-entity>
     </a-entity>
 
     <a-entity
