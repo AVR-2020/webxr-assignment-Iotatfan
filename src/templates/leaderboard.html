@@ -8,7 +8,26 @@
     <a-entity
         id="leaderboardBackground"
         mixin="slice"
-        slice9="width: 2; height: 2; side: double"
+        slice9="width: 3; height: 2.5; side: double"
         render-order="menuitem"></a-entity>
+
+    <a-entity
+        id="leaderboardTitle"
+        mixin="scoreText"
+        text="align: center; width: 2.5; value: LEADERBOARD"
+        position="0.05 1 0.001"
+        bind__visible="!leaderboardQualified"></a-entity>
+
+    <a-entity
+        id="leaderboardNames"
+        mixin="scoreText"
+        bind__text="color: colorSecondary; value: leaderboard.names"
+        position="-0.7 0.6 0.001"></a-entity>
+    
+      <a-entity
+        id="leaderboardScores"
+        mixin="scoreText"
+        bind__text="value: leaderboard.scores"
+        position="0.7 0.6 0.001"></a-entity>
 
 </a-entity>

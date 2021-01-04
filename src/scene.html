@@ -1,11 +1,12 @@
 <a-scene
     background="color: #87ceeb"
     fog="type: linear; color: #87ceeb; near: 50; far: 80"
+    leaderboard
     light="defaultLightsEnabled: false"
+    physics="debug: false"
     render-order="playfield, thrower, ball, menu, menuitem, menubutton, menutext, hud"
     renderer="colorManagement: true"
     shadow="type: pcf"
-    physics="debug: true"
 >
     <!-- LIGHT -->
     <a-entity light="type: ambient; intensity: 0.3;"></a-entity>
@@ -13,7 +14,7 @@
         intensity: 1.0; 
         decay: 2;
         castShadow: true; 
-        shadowCameraVisible: true;"
+        shadowCameraVisible: false;"
         position="0 50 0" ></a-entity>    
     
     <a-entity fps-counter></a-entity>
@@ -26,9 +27,7 @@
     <!-- Load Templates -->
     <require path="templates/environment.html"></require>
     <require path="templates/menu.html"></require>
-    <require path="templates/scoreboard.html"></require>
-    <require path="templates/life.html"></require>
-    <require path="templates/shooter.html"></require>
+    <require path="templates/enemy.html"></require>
     <require path="templates/gameOverMenu.html"></require>
     <require path="templates/randomTarget.html"></require>
 
@@ -37,36 +36,67 @@
 
     <!-- Player -->
     <a-entity 
-      id="cameraRig"
+      id="cameraRig" position="0.11744132142732938 0 0.11111629842663887"
       movement-controls>
       <a-camera
-        class="target"
         id="camera"
         look-controls="pointerLockEnabled: true"
         position="0 2 0">
+
+        <require path="templates/scoreboard.html"></require>
+        <require path="templates/life.html"></require>
+
+        <a-entity
+          id="mouseCursor"
+          cursor="rayOrigin: mouse"
+          raycaster="objects : #keyboard"
+          proxy-event__daydream="event: trackpaddown; to: #gun; as: triggerdown"
+          proxy-event__shoot="event: triggerdown; to: #gun; as: shoot"
+          proxy-event__shootsound="event: triggerdown; to: #soundShoot; as: shoot"
+          shooter
+          position="0.07 -0.1 -0.15"
+          rotation="0 5 0"
+          click-to-shoot>
+          <a-entity 
+            obj-model="obj: #pistol; mtl: #pistolmtl" 
+            position="0 -1 -0.3"
+            rotation="0 -90 0"
+            scale="0.1 0.1 0.1"></a-entity>
+        </a-entity>
+
       </a-camera>
     </a-entity>
-    
+  
+    <!-- Controller -->
     <a-entity
-        id="controllerRig">
-    
-        
+      shooter
+      id="rightGun"
+      vive-controls="hand: right; model: false;"
+      oculus-touch-controls="hand: right; model: false;"
+      daydream-controls="hand: right; model: false"
+      proxy-event__daydream="event: trackpaddown; to: #rightGun; as: triggerdown"
+      proxy-event__shoot="event: triggerdown; to: #rightGun; as: shoot"
+      raycaster="objects: [raycastable];">
+      <a-entity 
+        obj-model="obj: #pistol; mtl: #pistolmtl" 
+        position="0 -0.2 -0.3"
+        rotation="0 -90 0"
+          scale="0.2 0.2 0.2"></a-entity>
     </a-entity>
 
-    <!-- Cursor -->
     <a-entity
-        id="mouseCursor"
-        vive-controls="hand: right"
-        bind__raycaster="enabled: !inVR"
-        cursor="rayOrigin: mouse"
-        raycaster="objects: [raycastable];">
+      target
+      id="leftControl"
+      vive-controls="hand: left; model: false;"
+      oculus-touch-controls="hand: left; model: false;"
+      daydream-controls="hand: left; model: false"
+      cursor="rayOrigin: mouse"
+      raycaster="objects: [raycastable];">
+      <a-entity 
+        obj-model="obj: #shield; mtl: #shieldmtl" 
+        position="0 -0.2 -0.3"
+        rotation="0 -90 0"
+        scale="1.2 1.2 1.2"></a-entity>
     </a-entity>
-
-    <a-entity
-        id="mouseCursorMesh"
-        mixin="cursorMesh"
-        cursor-mesh="cursorEl: #mouseCursor"
-        bind__cursor-mesh="active: menuActive"
-        render-order="cursor"></a-entity>
     
 </a-scene>

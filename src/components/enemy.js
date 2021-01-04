@@ -1,4 +1,4 @@
-AFRAME.registerComponent('shooter', {
+AFRAME.registerComponent('enemy', {
     schema: {
       activeBall: {type: 'string', default: 'normal'},
       ballTypes: {type: 'array', default: ['normal']},
@@ -9,7 +9,7 @@ AFRAME.registerComponent('shooter', {
     },
 
     init: function () {
-      this.el.addEventListener('shoot', this.onShoot.bind(this))
+      this.el.addEventListener('enemyShoot', this.onShoot.bind(this))
       this.ballSystem = this.el.sceneEl.systems.ball
     },
 
@@ -22,6 +22,14 @@ AFRAME.registerComponent('shooter', {
       var data = this.data
       var el = this.el
       this.isPlaying = el.sceneEl.systems.state.state.isPlaying
+      
+
+      if ( (time - data.lastShootTime) >= data.shootingDelay && 
+            this.isPlaying) {
+        data.lastShootTime = time
+        // this.shoot()
+        el.emit("enemyShoot")
+      }
 
     },
 

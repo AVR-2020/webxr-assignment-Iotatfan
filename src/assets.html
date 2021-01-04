@@ -16,9 +16,9 @@
 <a-asset-item id="gazebo" position="0 0 16.97724" rotation="0 53 0" src="assets/models/gazebo/gazebo.obj"></a-asset-item>
 <a-asset-item id="gazebomtl" src="assets/models/gazebo/gazebo.mtl"></a-asset-item>
 <a-asset-item id="laserObj" src="assets/models/laser/laser.obj"></a-asset-item>
-<a-asset-item id="pistol" src="assets/models/gun/Pistol.obj"></a-asset-item>
-<a-asset-item id="pistolmtl" src="assets/models/gun/Pistol.mtl"></a-asset-item>
-<a-asset-item id="shield" src="assets/models/shield/model.obj"></a-asset-item>
+<a-asset-item id="pistol" src="assets/models/gun/glock.obj"></a-asset-item>
+<a-asset-item id="pistolmtl" src="assets/models/gun/glock.mtl"></a-asset-item>
+<a-asset-item id="shield" visible="false" scale="2 2 0.5" static-body="sphereRadius: NaN" rotation="0 180 0" src="assets/models/shield/model.obj"></a-asset-item>
 <a-asset-item id="shieldmtl" src="assets/models/shield/materials.mtl"></a-asset-item>
 <a-asset-item id="tank" src="assets/models/tank.gltf"></a-asset-item>
 <a-asset-item id="tree" position="-3.02465 0 -27.95161" src="assets/models/tree/tree.obj"></a-asset-item>
@@ -34,8 +34,11 @@
     sub-object="from: #cursorLaser; name: glow"></a-mixin>
 
 <a-mixin
-    id="ball"
-    gltf-model="#ballMesh"></a-mixin>
+    id="tree"
+    obj-model="obj: #tree; mtl: #treemtl" 
+    scale="0.01 0.01 0.01" 
+    shadow="receive: true" 
+    render-order="playfield"></a-mixin>
 
 <a-mixin
     id="font"></a-mixin>

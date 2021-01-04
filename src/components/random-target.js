@@ -21,15 +21,14 @@ AFRAME.registerComponent('random-target', {
     },
 
     tick: function (time, timeDelta) {
-      var entity = this.el.object3D
-      var data = this.data
+      let entity = this.el.object3D
+      let data = this.data
       this.isPlaying = this.el.sceneEl.systems.state.state.isPlaying
 
       if ( (time - data.lastMoveTime) >= data.moveDelay && this.isPlaying) {
           data.lastMoveTime = time
           entity.position.x = posX[Math.floor(Math.random()*posX.length)]
           entity.position.y = posY[Math.floor(Math.random()*posY.length)]
-          // console.log(entity)
       }
 
     } 

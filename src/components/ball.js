@@ -1,11 +1,11 @@
 AFRAME.registerComponent('ball', {
     schema: {
         direction: {type: 'vec3'},
-        lifeTime: {default: 2.0, type: 'float'},
+        lifeTime: {default: 5.0, type: 'float'},
         name: {default: 'normal', type: 'string'},
         poolSize: {default: 8.0, type: 'float'},
         position: {type: 'vec3'},
-        speed: {default: 25.0, type: 'float'}
+        speed: {default: 10.0, type: 'float'}
     },
 
     init: function () {
@@ -65,6 +65,16 @@ AFRAME.registerSystem('ball', {
       ball.visible = false
       this.pool[ballData.name].push(ball)
     }
+  },
+
+  registerTarget: function (targetComponent, isStatic) {
+    var targetObj;
+    this.targets.push(targetComponent.el);
+    if (!isStatic) { return; }
+    
+    // Precalculate bounding box of bullet.
+    targetObj = targetComponent.el.object3D;
+    targetObj.boundingBox = new THREE.Box3().setFromObject(targetObj);
   },
 
   shoot: function (ballName, gun) {
@@ -128,7 +138,6 @@ AFRAME.registerSystem('ball', {
           let target = this.targets[t];
           if (!target.getAttribute('target').active) { continue; }
           targetObj = target.object3D;
-          if (!targetObj.visible) { continue; }
           isHit = false;
           if (targetObj.boundingBox) {
             isHit = targetObj.boundingBox.intersectsBox(ballBox);
@@ -138,7 +147,7 @@ AFRAME.registerSystem('ball', {
           }
           if (isHit) {
             this.destroyBall(ball);
-            target.components.target.onballHit(ball);
+            target.components.target.onBallHit(ball);
             target.emit('hit', null);
             break;
           }

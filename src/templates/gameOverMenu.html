@@ -8,7 +8,6 @@
         slice9="width: 3.5; height: 2; side: double; transparent: true; debug: false;"
         render-order="menu"
         position="0 0.5 -1.5"></a-entity>
-   
 
         <a-entity 
             id="gameOverMenu"
@@ -35,27 +34,22 @@
                 mixin="menuButton"
                 clickable
                 bind-toggle__raycastable="isGameOver"
-                proxy-event="event: click; to: a-scene; as: startgame"
+                proxy-event="event: click; to: a-scene; as: leaderboardsubmit"
                 position="0 -1 0"
                 render-order="menu">
                 <a-entity 
                     id="startButtonText"
                     mixin="menuText" 
-                    text="value: Play Again; side: double"></a-entity>
+                    text="value: Submit; side: double"></a-entity>
             </a-plane>
         
         </a-entity>
 
-        <a-text 
-            id="input" 
-            font="dejavu" 
-            mixin="scoreText"
-            value="Input Your Name" 
-            position="0 0.75 -1.45"></a-text>
         <a-entity
             id="keyboard" rotation="-60 0 0" scale="4 4 4"
-            position="-0.96483 -0.51329 -1"
-            a-keyboard></a-entity>
+            position="-0.00884 -0.51329 -0.53294"
+            proxy-event__change="event: superkeyboardchange; to: a-scene; as: leaderboardusername"
+            super-keyboard="hand: #mouseCursor; imagePath: assets/img/"></a-entity>
     
         <require path="templates/leaderboard.html"></require>
     
