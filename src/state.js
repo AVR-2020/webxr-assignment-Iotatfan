@@ -61,7 +61,7 @@ AFRAME.registerState({
         },
 
         leaderboardusername() {
-
+            console.log("Username")
         },
 
         miss: state => {

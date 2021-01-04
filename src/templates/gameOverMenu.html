@@ -46,10 +46,11 @@
         </a-entity>
 
         <a-entity
-            id="keyboard" rotation="-60 0 0" scale="4 4 4"
-            position="-0.00884 -0.51329 -0.53294"
+            id="keyboard" rotation="-59.99999999999999 0 0" scale="4 4 4"
+            keyboard-raycastable="condition: isGameOver"
+            position="-0.00884 -0.51329 -0.10359"
             proxy-event__change="event: superkeyboardchange; to: a-scene; as: leaderboardusername"
-            super-keyboard="hand: #mouseCursor; imagePath: assets/img/"></a-entity>
+            super-keyboard="hand: #mouseCursor; imagePath: assets/img/; model: basic"></a-entity>
     
         <require path="templates/leaderboard.html"></require>
     
